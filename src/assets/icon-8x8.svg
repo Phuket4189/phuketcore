@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+   根据你提供的像素图（已放大）制作的 8x8 SVG 像素头像示例。
+  说明：
+  - 画布 viewBox="0 0 8 8"，每个 <rect> 为 1x1 像素。
+  - 要修改某个像素，请编辑对应行（Row 注释）中的 <rect x="..." y="..." />。
+  - 颜色说明已在下面的注释和 <style> 中标注，方便替换。
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" role="img" aria-label="8x8 avatar">
+  <title>8x8 Avatar (editable)</title>
+  <style>
+    /* 颜色调色板（方便修改） */
+    .green-outer { fill: #2f6b2f; /* 左右外层绿色 */ }
+    .green-inner { fill: #17360f; /* 侧栏深绿色背景 */ }
+    .blue { fill: #4242f6; }
+    .eye-black { fill: #181818; }
+    .white { fill: #ffffff; }
+    .beak { fill: #f7a73e; }
+    .yellow { fill: #faee4c; }
+    .px { shape-rendering: crispEdges; }
+  </style>
+
+  <!-- 像素网格注释（行 y 从 0 到 7，列 x 从 0 到 7）
+      我已按图片猜测像素颜色，下面每行为该行的像素布局。
+      Row 0: green-outer, green-inner, blue, yellow, yellow, blue, green-inner, green-outer
+      Row 1: green-inner, blue, blue, yellow, yellow, blue, blue, green-inner
+      Row 2: blue, eye-black, eye-black, yellow, yellow, eye-black, eye-black, blue
+      Row 3: white, white, white, beak, beak, white, white, white
+      Row 4: beak x8
+      Row 5: yellow, yellow, beak, beak, beak, beak, yellow, yellow
+      Row 6: yellow x8
+      Row 7: green-outer x8  (底部边框)
+  -->
+
+  <!-- Row 0 -->
+  <rect class="px green-outer" x="0" y="0" width="1" height="1" />
+  <rect class="px green-inner" x="1" y="0" width="1" height="1" />
+  <rect class="px green-inner" x="2" y="0" width="1" height="1" />
+  <rect class="px green-inner" x="3" y="0" width="1" height="1" />
+  <rect class="px green-inner" x="4" y="0" width="1" height="1" />
+  <rect class="px green-inner" x="5" y="0" width="1" height="1" />
+  <rect class="px green-inner" x="6" y="0" width="1" height="1" />
+  <rect class="px green-outer" x="7" y="0" width="1" height="1" />
+
+  <!-- Row 1 -->
+  <rect class="px green-outer" x="0" y="1" width="1" height="1" />
+  <rect class="px green-inner" x="1" y="1" width="1" height="1" />
+  <rect class="px blue" x="2" y="1" width="1" height="1" />
+  <rect class="px yellow" x="3" y="1" width="1" height="1" />
+  <rect class="px yellow" x="4" y="1" width="1" height="1" />
+  <rect class="px blue" x="5" y="1" width="1" height="1" />
+  <rect class="px green-inner" x="6" y="1" width="1" height="1" />
+  <rect class="px green-outer" x="7" y="1" width="1" height="1" />
+
+  <!-- Row 2 -->
+  <rect class="px green-inner" x="0" y="2" width="1" height="1" />
+  <rect class="px blue" x="1" y="2" width="1" height="1" />
+  <rect class="px eye-black" x="2" y="2" width="1" height="1" />
+  <rect class="px yellow" x="3" y="2" width="1" height="1" />
+  <rect class="px yellow" x="4" y="2" width="1" height="1" />
+  <rect class="px eye-black" x="5" y="2" width="1" height="1" />
+  <rect class="px blue" x="6" y="2" width="1" height="1" />
+  <rect class="px green-inner" x="7" y="2" width="1" height="1" />
+
+  <!-- Row 3 -->
+  <rect class="px green-inner" x="0" y="3" width="1" height="1" />
+  <rect class="px blue" x="1" y="3" width="1" height="1" />
+  <rect class="px eye-black" x="2" y="3" width="1" height="1" />
+  <rect class="px yellow" x="3" y="3" width="1" height="1" />
+  <rect class="px yellow" x="4" y="3" width="1" height="1" />
+  <rect class="px eye-black" x="5" y="3" width="1" height="1" />
+  <rect class="px blue" x="6" y="3" width="1" height="1" />
+  <rect class="px green-inner" x="7" y="3" width="1" height="1" />
+
+  <!-- Row 4 (beak full width) -->
+  <rect class="px green-inner" x="0" y="4" width="1" height="1" />
+  <rect class="px white" x="1" y="4" width="1" height="1" />
+  <rect class="px white" x="2" y="4" width="1" height="1" />
+  <rect class="px yellow" x="3" y="4" width="1" height="1" />
+  <rect class="px yellow" x="4" y="4" width="1" height="1" />
+  <rect class="px white" x="5" y="4" width="1" height="1" />
+  <rect class="px white" x="6" y="4" width="1" height="1" />
+  <rect class="px green-inner" x="7" y="4" width="1" height="1" />
+
+  <!-- Row 5 -->
+  <rect class="px green-inner" x="0" y="5" width="1" height="1" />
+  <rect class="px beak" x="1" y="5" width="1" height="1" />
+  <rect class="px beak" x="2" y="5" width="1" height="1" />
+  <rect class="px beak" x="3" y="5" width="1" height="1" />
+  <rect class="px beak" x="4" y="5" width="1" height="1" />
+  <rect class="px beak" x="5" y="5" width="1" height="1" />
+  <rect class="px beak" x="6" y="5" width="1" height="1" />
+  <rect class="px green-inner" x="7" y="5" width="1" height="1" />
+
+  <!-- Row 6 (chin light yellow) -->
+  <rect class="px green-inner" x="0" y="6" width="1" height="1" />
+  <rect class="px yellow" x="1" y="6" width="1" height="1" />
+  <rect class="px beak" x="2" y="6" width="1" height="1" />
+  <rect class="px beak" x="3" y="6" width="1" height="1" />
+  <rect class="px beak" x="4" y="6" width="1" height="1" />
+  <rect class="px beak" x="5" y="6" width="1" height="1" />
+  <rect class="px yellow" x="6" y="6" width="1" height="1" />
+  <rect class="px green-inner" x="7" y="6" width="1" height="1" />
+
+  <!-- Row 7 (bottom border) -->
+  <rect class="px green-inner" x="0" y="7" width="1" height="1" />
+  <rect class="px green-inner" x="1" y="7" width="1" height="1" />
+  <rect class="px yellow" x="2" y="7" width="1" height="1" />
+  <rect class="px yellow" x="3" y="7" width="1" height="1" />
+  <rect class="px yellow" x="4" y="7" width="1" height="1" />
+  <rect class="px yellow" x="5" y="7" width="1" height="1" />
+  <rect class="px green-inner" x="6" y="7" width="1" height="1" />
+  <rect class="px green-inner" x="7" y="7" width="1" height="1" />
+
+</svg>

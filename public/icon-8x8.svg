@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Public favicon copy of src/assets/icon-8x8.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" role="img" aria-label="8x8 avatar">
+  <title>8x8 Avatar (favicon)</title>
+  <style>
+    .green-outer { fill: #2f6b2f; }
+    .green-inner { fill: #17360f; }
+    .blue { fill: #4242f6; }
+    .eye-black { fill: #181818; }
+    .white { fill: #ffffff; }
+    .beak { fill: #f7a73e; }
+    .yellow { fill: #faee4c; }
+    .px { shape-rendering: crispEdges; }
+  </style>
+
+  <rect class="px green-outer" x="0" y="0" width="1" height="1" />
+  <rect class="px green-inner" x="1" y="0" width="1" height="1" />
+  <rect class="px green-inner" x="2" y="0" width="1" height="1" />
+  <rect class="px green-inner" x="3" y="0" width="1" height="1" />
+  <rect class="px green-inner" x="4" y="0" width="1" height="1" />
+  <rect class="px green-inner" x="5" y="0" width="1" height="1" />
+  <rect class="px green-inner" x="6" y="0" width="1" height="1" />
+  <rect class="px green-outer" x="7" y="0" width="1" height="1" />
+
+  <rect class="px green-outer" x="0" y="1" width="1" height="1" />
+  <rect class="px green-inner" x="1" y="1" width="1" height="1" />
+  <rect class="px blue" x="2" y="1" width="1" height="1" />
+  <rect class="px yellow" x="3" y="1" width="1" height="1" />
+  <rect class="px yellow" x="4" y="1" width="1" height="1" />
+  <rect class="px blue" x="5" y="1" width="1" height="1" />
+  <rect class="px green-inner" x="6" y="1" width="1" height="1" />
+  <rect class="px green-outer" x="7" y="1" width="1" height="1" />
+
+  <rect class="px green-inner" x="0" y="2" width="1" height="1" />
+  <rect class="px blue" x="1" y="2" width="1" height="1" />
+  <rect class="px eye-black" x="2" y="2" width="1" height="1" />
+  <rect class="px yellow" x="3" y="2" width="1" height="1" />
+  <rect class="px yellow" x="4" y="2" width="1" height="1" />
+  <rect class="px eye-black" x="5" y="2" width="1" height="1" />
+  <rect class="px blue" x="6" y="2" width="1" height="1" />
+  <rect class="px green-inner" x="7" y="2" width="1" height="1" />
+
+  <rect class="px green-inner" x="0" y="3" width="1" height="1" />
+  <rect class="px blue" x="1" y="3" width="1" height="1" />
+  <rect class="px eye-black" x="2" y="3" width="1" height="1" />
+  <rect class="px yellow" x="3" y="3" width="1" height="1" />
+  <rect class="px yellow" x="4" y="3" width="1" height="1" />
+  <rect class="px eye-black" x="5" y="3" width="1" height="1" />
+  <rect class="px blue" x="6" y="3" width="1" height="1" />
+  <rect class="px green-inner" x="7" y="3" width="1" height="1" />
+
+  <rect class="px green-inner" x="0" y="4" width="1" height="1" />
+  <rect class="px white" x="1" y="4" width="1" height="1" />
+  <rect class="px white" x="2" y="4" width="1" height="1" />
+  <rect class="px yellow" x="3" y="4" width="1" height="1" />
+  <rect class="px yellow" x="4" y="4" width="1" height="1" />
+  <rect class="px white" x="5" y="4" width="1" height="1" />
+  <rect class="px white" x="6" y="4" width="1" height="1" />
+  <rect class="px green-inner" x="7" y="4" width="1" height="1" />
+
+  <rect class="px green-inner" x="0" y="5" width="1" height="1" />
+  <rect class="px beak" x="1" y="5" width="1" height="1" />
+  <rect class="px beak" x="2" y="5" width="1" height="1" />
+  <rect class="px beak" x="3" y="5" width="1" height="1" />
+  <rect class="px beak" x="4" y="5" width="1" height="1" />
+  <rect class="px beak" x="5" y="5" width="1" height="1" />
+  <rect class="px beak" x="6" y="5" width="1" height="1" />
+  <rect class="px green-inner" x="7" y="5" width="1" height="1" />
+
+  <rect class="px green-inner" x="0" y="6" width="1" height="1" />
+  <rect class="px yellow" x="1" y="6" width="1" height="1" />
+  <rect class="px beak" x="2" y="6" width="1" height="1" />
+  <rect class="px beak" x="3" y="6" width="1" height="1" />
+  <rect class="px beak" x="4" y="6" width="1" height="1" />
+  <rect class="px beak" x="5" y="6" width="1" height="1" />
+  <rect class="px yellow" x="6" y="6" width="1" height="1" />
+  <rect class="px green-inner" x="7" y="6" width="1" height="1" />
+
+  <rect class="px green-inner" x="0" y="7" width="1" height="1" />
+  <rect class="px green-inner" x="1" y="7" width="1" height="1" />
+  <rect class="px yellow" x="2" y="7" width="1" height="1" />
+  <rect class="px yellow" x="3" y="7" width="1" height="1" />
+  <rect class="px yellow" x="4" y="7" width="1" height="1" />
+  <rect class="px yellow" x="5" y="7" width="1" height="1" />
+  <rect class="px green-inner" x="6" y="7" width="1" height="1" />
+  <rect class="px green-inner" x="7" y="7" width="1" height="1" />
+
+</svg>
