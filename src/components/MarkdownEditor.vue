@@ -14,7 +14,8 @@ import { ref, onMounted, watch } from 'vue'
 
 const props = defineProps({
   endpoint: { type: String, required: true },
-  title: { type: String, default: '' }
+  title: { type: String, default: '' },
+  mode: { type: String, default: 'overwrite' } // 'overwrite' 或 'append'
 })
 const content = ref('')
 const msg = ref('')
@@ -33,10 +34,19 @@ async function load() {
 
 async function save() {
   try {
+    let body
+    if (props.mode === 'append') {
+      // 追加模式：发送 { text: content }
+      body = JSON.stringify({ text: content.value })
+    } else {
+      // 覆盖模式：发送 { content: text }
+      body = JSON.stringify({ content: content.value })
+    }
+    
     const res = await fetch(props.endpoint, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ content: content.value })
+      body: body
     })
     const j = await res.json()
     if (res.ok && j.ok) {

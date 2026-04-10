@@ -8,7 +8,18 @@
       <li><router-link to="/dlog">开发日志</router-link></li>
     </ul>
     <div class="footer-info">
-      <p>湘ICP备2026005726号</p>
+<!--       
+      <p>
+      
+       <a href="https://beian.miit.gov.cn/#/Integrated/index" rel="noreferrer" target="_blank">湘ICP备2026005726号-1</a>
+       <br>
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=43010302002236" rel="noreferrer" target="_blank">湘公网安备43010302002236号</a>
+    </p>
+    <p>© 2024 PhuketCore.</p>
+    -->
+      
+      
+
     </div>
   </nav>
 </template>

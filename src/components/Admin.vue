@@ -11,7 +11,7 @@
       </button>
     </div>
     <div class="editor" v-if="selected">
-      <MarkdownEditor :endpoint="selected.endpoint" :title="selected.label" />
+      <MarkdownEditor :endpoint="selected.endpoint" :title="selected.label" :mode="selected.mode || 'overwrite'" />
     </div>
   </div>
 </template>
@@ -21,7 +21,7 @@ import { ref, onMounted } from 'vue'
 import MarkdownEditor from './MarkdownEditor.vue'
 
 const modules = [
-  { name: 'devlog', label: '开发日志', endpoint: '/api/docs/devlog.md' },
+  { name: 'devlog', label: '开发日志', endpoint: '/api/devlog', mode: 'append' },
   { name: 'project-readme', label: '项目 README', endpoint: '/api/docs/BSL-README.md' },
   { name: 'project-features', label: '项目 功能列表', endpoint: '/api/docs/BSL-FEATURES.md' },
   { name: 'project-issues', label: '项目 问题列表', endpoint: '/api/docs/BSL-ISSUES.md' },

@@ -1,6 +1,10 @@
 <template>
   <div class="home">
     <section class="hero">
+      <div class="glass-blob blob-1"></div>
+      <div class="glass-blob blob-2"></div>
+      <div class="glass-blob blob-3"></div>
+      <div class="glass-blob blob-4"></div>
       <div class="hero-content">
         <transition-group name="fadeup" tag="div">
           <h1 v-if="showHero" key="h1">PhuketCore</h1>
@@ -33,8 +37,16 @@
           <!-- https://github.com/Phuket4189/BSL -->
         </div>
       </div>
+      
     </section>
-    <!-- 湘ICP备2026005726号 -->
+    <p class="footer-info">
+      © 2026 PhuketCore.&nbsp;&nbsp;
+      <!-- https://beian.miit.gov.cn/#/Integrated/index -->
+       <a href="https://beian.miit.gov.cn/#/Integrated/index" rel="noreferrer" target="_blank">湘ICP备2026005726号-1</a>
+       &nbsp;&nbsp;
+       <img src="/备案图标.png" alt="备案图标" style="width: 20px; height: 20px; vertical-align: middle;">
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=43010302002236" rel="noreferrer" target="_blank">湘公网安备43010302002236号</a>
+    </p>
   </div>
 </template>
 
@@ -91,6 +103,68 @@ onBeforeUnmount(() => {
   align-items: center;
   justify-content: center;
   background: linear-gradient(180deg, #e3eafe 0%, #f5f5fa 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* 玻璃质感悬浮圆饼装饰 */
+.glass-blob {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.3);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.blob-1 {
+  width: 320px;
+  height: 320px;
+  top: 5%;
+  left: 2%;
+  animation: float 8s ease-in-out infinite;
+}
+
+.blob-2 {
+  width: 260px;
+  height: 260px;
+  top: 55%;
+  right: 5%;
+  animation: float 10s ease-in-out infinite 1s;
+}
+
+.blob-3 {
+  width: 300px;
+  height: 300px;
+  bottom: 5%;
+  left: 10%;
+  animation: float 12s ease-in-out infinite 2s;
+}
+
+.blob-4 {
+  width: 240px;
+  height: 240px;
+  top: 25%;
+  right: 2%;
+  animation: float 9s ease-in-out infinite 0.5s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  25% {
+    transform: translateY(-30px) translateX(15px);
+  }
+  50% {
+    transform: translateY(-50px) translateX(-10px);
+  }
+  75% {
+    transform: translateY(-20px) translateX(20px);
+  }
 }
 .hero-content {
   text-align: center;
@@ -239,6 +313,16 @@ onBeforeUnmount(() => {
 .project-link:hover {
   color: #1d4ed8;
   border-bottom: 1px solid #1d4ed8;
+}
+
+.footer-info a {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.footer-info a:hover {
+  text-decoration: underline;
 }
 
 @media (min-width: 900px) {
