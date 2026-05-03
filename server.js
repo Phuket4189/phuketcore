@@ -16,6 +16,17 @@ app.use(express.json())
 // 我们将日志和其他文档文件放在 public/docs 目录下，方便在开发和构建后都能访问
 const DOC_DIR = path.resolve(__dirname, 'public', 'docs')
 const LOG_PATH = path.join(DOC_DIR, 'devlog.md')
+const DOC_DIR_PREFIX = `${DOC_DIR}${path.sep}`
+
+function resolveDocPath(name) {
+  if (typeof name !== 'string' || !name.trim()) return null
+  if (name.includes('/') || name.includes('\\') || name.includes('\0')) return null
+
+  const resolvedPath = path.resolve(DOC_DIR, name)
+  if (resolvedPath !== DOC_DIR && !resolvedPath.startsWith(DOC_DIR_PREFIX)) return null
+
+  return resolvedPath
+}
 
 // 启动时输出路径信息，方便调试
 console.log('=== 服务器启动信息 ===')
@@ -47,27 +58,19 @@ app.use((req, res, next) => {
   next()
 })
 
-// API路由 - 必须在静态文件服务之前
-// GET: 返回当前 devlog 文件内容（追加接口依旧可用）
+// Markdown API endpoints
 app.get('/api/devlog', (req, res) => {
-  console.log('处理 /api/devlog 请求')
-  console.log('LOG_PATH:', LOG_PATH)
-  console.log('文件是否存在:', fs.existsSync(LOG_PATH))
-  
-  if (!fs.existsSync(LOG_PATH)) {
-    console.log('文件不存在，返回空内容')
-    return res.type('text/plain').send('# 开发日志\n\n')
-  }
-  
-  try {
-    const content = fs.readFileSync(LOG_PATH, 'utf8')
-    console.log('文件内容长度:', content.length)
-    console.log('文件内容预览:', content.substring(0, 100))
-    return res.type('text/plain').send(content)
-  } catch (error) {
-    console.error('读取文件失败:', error)
-    return res.status(500).json({ error: 'read_failed' })
-  }
+  fs.readFile(path.join(__dirname, 'public', 'docs', 'devlog.md'), 'utf8', (err, data) => {
+    if (err) return res.status(500).send('Failed to load devlog')
+    res.type('text/markdown').send(data)
+  })
+})
+
+app.get('/api/docs/study.md', (req, res) => {
+  fs.readFile(path.join(__dirname, 'public', 'docs', 'study.md'), 'utf8', (err, data) => {
+    if (err) return res.status(500).send('Failed to load study notes')
+    res.type('text/markdown').send(data)
+  })
 })
 
 // POST: 追加新日志条目，body: { text: '...' }
@@ -115,9 +118,8 @@ app.get('/api/docs/list', (req, res) => {
 app.get('/api/docs/:name', (req, res) => {
   console.log(`处理 /api/docs/${req.params.name} 请求`)
   const name = req.params.name
-  if (!/^[\w.-]+$/.test(name)) return res.status(400).json({ error: 'invalid_name' })
-  const p = path.join(DOC_DIR, name)
-  if (!p.startsWith(DOC_DIR)) return res.status(400).json({ error: 'invalid_path' })
+  const p = resolveDocPath(name)
+  if (!p) return res.status(400).json({ error: 'invalid_name' })
   if (!fs.existsSync(p)) return res.status(404).json({ error: 'not_found' })
   return res.sendFile(p)
 })
@@ -125,10 +127,9 @@ app.post('/api/docs/:name', (req, res) => {
   console.log(`处理 /api/docs/${req.params.name} POST 请求`)
   const name = req.params.name
   const { content } = req.body || {}
-  if (!/^[\w.-]+$/.test(name)) return res.status(400).json({ error: 'invalid_name' })
+  const p = resolveDocPath(name)
+  if (!p) return res.status(400).json({ error: 'invalid_name' })
   if (typeof content !== 'string') return res.status(400).json({ error: 'invalid_content' })
-  const p = path.join(DOC_DIR, name)
-  if (!p.startsWith(DOC_DIR)) return res.status(400).json({ error: 'invalid_path' })
   try {
     fs.writeFileSync(p, content, 'utf8')
     return res.json({ ok: true })

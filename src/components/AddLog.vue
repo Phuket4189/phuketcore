@@ -12,6 +12,7 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
+import { fetchJsonOrThrow } from '../utils/http'
 
 // 简单的管理员页面：使用 fetch POST 到后端 API /api/devlog
 // 我没有把这个路由放入导航，这样它对外是"隐藏的"。
@@ -29,19 +30,13 @@ async function submit() {
     return
   }
   try {
-    const res = await fetch('/api/devlog', {
+    await fetchJsonOrThrow('/api/devlog', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ text: content.value })
     })
-    const j = await res.json()
-    if (res.ok && j.ok) {
-      msg.value = '已添加'
-      content.value = ''
-    } else {
-      msg.value = '提交失败'
-      console.error(j)
-    }
+    msg.value = '已添加'
+    content.value = ''
   } catch (e) {
     msg.value = '提交异常'
     console.error(e)

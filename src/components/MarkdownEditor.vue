@@ -1,6 +1,7 @@
 <template>
   <div class="markdown-editor">
     <h2>{{ title }}</h2>
+    <p v-if="mode === 'append'" class="mode-hint">这里提交的是新增内容，保存后会追加到文档末尾，不会覆盖原文件。</p>
     <textarea v-model="content" rows="20" placeholder="Markdown 内容..."></textarea>
     <div style="margin-top:8px">
       <button @click="save">保存</button>
@@ -10,7 +11,8 @@
 </template>
 
 <script setup>
-import { ref, onMounted, watch } from 'vue'
+import { ref, watch } from 'vue'
+import { fetchJsonOrThrow, fetchTextOrThrow } from '../utils/http'
 
 const props = defineProps({
   endpoint: { type: String, required: true },
@@ -21,10 +23,14 @@ const content = ref('')
 const msg = ref('')
 
 async function load() {
+  if (props.mode === 'append') {
+    content.value = ''
+    msg.value = ''
+    return
+  }
+
   try {
-    const res = await fetch(props.endpoint)
-    const text = await res.text()
-    content.value = text
+    content.value = await fetchTextOrThrow(props.endpoint)
     msg.value = ''
   } catch (e) {
     console.error(e)
@@ -33,27 +39,31 @@ async function load() {
 }
 
 async function save() {
+  if (!content.value.trim()) {
+    msg.value = '内容为空'
+    return
+  }
+
   try {
-    let body
+    let payload
     if (props.mode === 'append') {
-      // 追加模式：发送 { text: content }
-      body = JSON.stringify({ text: content.value })
+      payload = { text: content.value }
     } else {
-      // 覆盖模式：发送 { content: text }
-      body = JSON.stringify({ content: content.value })
+      payload = { content: content.value }
     }
-    
-    const res = await fetch(props.endpoint, {
+
+    await fetchJsonOrThrow(props.endpoint, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: body
+      body: JSON.stringify(payload)
     })
-    const j = await res.json()
-    if (res.ok && j.ok) {
-      msg.value = '保存成功'
+
+    msg.value = '保存成功'
+
+    if (props.mode === 'append') {
+      content.value = ''
     } else {
-      msg.value = '保存失败'
-      console.error(j)
+      await load()
     }
   } catch (e) {
     console.error(e)
@@ -61,14 +71,29 @@ async function save() {
   }
 }
 
-onMounted(load)
+watch(() => [props.endpoint, props.mode], load, { immediate: true })
 </script>
 
 <style scoped>
+.markdown-editor {
+  text-align: left;
+}
+
+.markdown-editor h2 {
+  margin-bottom: 0.5rem;
+}
+
+.mode-hint {
+  margin: 0 0 1rem 0;
+  color: #64748b;
+  font-size: 0.95rem;
+}
+
 .markdown-editor textarea {
   width: 100%;
   font-family: inherit;
   font-size: 1rem;
+  box-sizing: border-box;
 }
 button {
   padding: 0.4rem 0.8rem;

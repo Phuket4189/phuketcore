@@ -47,74 +47,75 @@ onMounted(() => {
   justify-content: center;
   align-items: flex-start;
   min-height: 60vh;
-  background: var(--about-bg, #f7f8fa);
-  padding: 2rem 0;
+  padding: 3.5rem 1.5rem;
 }
 
 .about-card {
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.08);
-  padding: 2.5rem 2.5rem 2rem 2.5rem;
-  max-width: 600px;
+  background: var(--bg-panel-strong);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-soft);
+  box-shadow: var(--shadow-medium), var(--shadow-inset);
+  backdrop-filter: blur(14px);
+  padding: 3rem;
+  max-width: 760px;
   width: 100%;
-  margin: 2rem 1rem;
+  margin: 0 auto;
   animation: fadeIn 0.7s;
 }
 
 .about-title {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 1.5rem;
-  color: #2d3748;
-  letter-spacing: 2px;
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 1.6rem;
+  color: var(--text-primary);
+  letter-spacing: -0.03em;
   text-align: left;
 }
 
 .about-desc {
-  font-size: 1.08rem;
-  color: #444;
-  margin-bottom: 1.1rem;
-  line-height: 1.8;
+  font-size: 1.02rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.15rem;
+  line-height: 1.9;
 }
 
 .about-list {
   list-style: none;
   padding: 0;
-  margin: 1.2rem 0 0 0;
+  margin: 1.8rem 0 0 0;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--border-soft);
 }
 .about-list li {
-  margin-bottom: 0.7rem;
-  font-size: 1.05rem;
-  color: #333;
+  margin-bottom: 0.95rem;
+  font-size: 1rem;
+  color: var(--text-primary);
 }
 .about-label {
   font-weight: 600;
-  color: #3182ce;
+  color: var(--brand);
   margin-right: 0.5em;
 }
 a {
-  color: #3182ce;
-  text-decoration: none;
+  color: var(--brand);
   transition: color 0.2s;
 }
 a:hover {
-  text-decoration: underline;
-  color: #205080;
+  color: var(--brand-strong);
 }
 
 .email-copy {
-  color: #3182ce;
+  color: var(--brand);
   cursor: pointer;
-  border-bottom: 1px solid #3182ce;
+  border-bottom: 1px solid rgba(49, 70, 208, 0.3);
   padding-bottom: 2px;
   transition: color 0.2s, background-color 0.2s;
   position: relative;
 }
 
 .email-copy:hover {
-  color: #205080;
-  border-bottom-color: #205080;
+  color: var(--brand-strong);
+  border-bottom-color: var(--brand-strong);
 }
 
 .email-copy:active {
@@ -123,7 +124,7 @@ a:hover {
 
 .copy-feedback {
   margin-left: 0.5rem;
-  color: #48bb78;
+  color: #1d8f58;
   font-weight: 500;
   font-size: 0.9rem;
   animation: popIn 0.3s ease-out;
@@ -143,5 +144,20 @@ a:hover {
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(30px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 720px) {
+  .about-container {
+    padding: 1.5rem 1rem 2rem;
+  }
+
+  .about-card {
+    padding: 2rem 1.3rem;
+    border-radius: 22px;
+  }
+
+  .about-title {
+    font-size: 2rem;
+  }
 }
 </style>

@@ -37,6 +37,28 @@
           <!-- https://github.com/Phuket4189/BSL -->
         </div>
       </div>
+
+      <div class="intro-inner">
+        <h2>items-retrieval</h2>
+        <div class="project-card">
+          <div class="project-header">
+            <span class="project-badge">工具</span>
+            <h3>items-retrieval</h3>
+          </div>
+          <p class="project-desc">items-retrieval 是一个《我的世界》物品检索工具，帮助玩家快速查找和管理游戏中的物品。</p>
+          <ul class="project-features">
+            <li>快速查找游戏中的物品</li>
+            <li>支持多个物品分类的查找</li>
+            <li>内置物品检索范围设置，方便玩家调整宿舍容器的半径范围</li>
+            <li>简洁UI，操作直观易用</li>
+          </ul>
+          <div class="project-meta">
+            <span>技术栈：Java</span>
+          </div>
+          <router-link class="project-link" to="/project/items-retrieval">了解更多 &rarr;</router-link>
+          <!-- https://github.com/Phuket4189/items-retrieval -->
+        </div>
+      </div>
       
     </section>
     <p class="footer-info">
@@ -52,9 +74,6 @@
 
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue'
-
-const props = defineProps({ msg: { type: String, default: '你好! PhuketCore' } })
-const count = ref(0)
 
 const introRef = ref(null)
 const visible = ref(false)
@@ -93,7 +112,10 @@ onBeforeUnmount(() => {
 
 <style scoped>
 
-.home { color: #222; }
+.home {
+  color: var(--text-primary);
+  padding-bottom: 2.5rem;
+}
 .hero {
   width: 100vw;
   min-width: 100vw;
@@ -102,20 +124,22 @@ onBeforeUnmount(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(180deg, #e3eafe 0%, #f5f5fa 100%);
+  background:
+    radial-gradient(circle at 18% 22%, rgba(255,255,255,0.82), transparent 0, transparent 26%),
+    radial-gradient(circle at 82% 18%, rgba(115, 137, 255, 0.18), transparent 24%),
+    linear-gradient(180deg, #f8f9fd 0%, #eef2f8 56%, #e8edf6 100%);
   position: relative;
   overflow: hidden;
 }
 
-/* 玻璃质感悬浮圆饼装饰 */
 .glass-blob {
   position: absolute;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow: 0 28px 60px rgba(96, 112, 146, 0.12), inset 0 1px 0 rgba(255,255,255,0.9);
   z-index: 1;
   pointer-events: none;
 }
@@ -168,41 +192,44 @@ onBeforeUnmount(() => {
 }
 .hero-content {
   text-align: center;
-  padding: 2rem;
+  padding: 2.5rem;
   min-width: 320px;
+  position: relative;
+  z-index: 5;
 }
 .hero h1 {
-  font-size: 3.2rem;
-  margin: 0 0 0.5rem;
+  font-size: clamp(3rem, 7vw, 5.6rem);
+  margin: 0 0 0.9rem;
   font-weight: 800;
-  letter-spacing: 2px;
-  color: #2d3748;
-  text-shadow: 0 2px 16px #b6c6e6aa;
+  letter-spacing: -0.05em;
+  color: #1a2235;
+  text-shadow: 0 16px 40px rgba(90, 106, 146, 0.12);
 }
 .subtitle {
-  margin: 0 0 1.25rem;
-  color: #4a5568;
-  font-size: 1.25rem;
-  letter-spacing: 1px;
+  margin: 0 0 1.6rem;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 .down {
-  width: 56px;
-  height: 56px;
+  width: 60px;
+  height: 60px;
   border-radius: 999px;
-  border: none;
-  background: linear-gradient(135deg, #2563eb 60%, #60a5fa 100%);
-  color: #fff;
-  cursor: pointer;
+  border: 1px solid rgba(73, 93, 138, 0.16);
+  background: rgba(255,255,255,0.78);
+  color: #20304f;
   font-size: 1.5rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 12px #2563eb33;
-  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 18px 34px rgba(27, 39, 60, 0.1);
+  transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
 }
 .down:hover {
-  background: linear-gradient(135deg, #1d4ed8 60%, #3b82f6 100%);
-  box-shadow: 0 4px 24px #2563eb44;
+  background: rgba(255,255,255,0.96);
+  box-shadow: 0 22px 42px rgba(27, 39, 60, 0.14);
+  transform: translateY(-2px);
 }
 
 /* 聚合渐显动画 */
@@ -227,8 +254,8 @@ onBeforeUnmount(() => {
 }
 
 .intro {
-  padding: 4rem 1.5rem;
-  max-width: 900px;
+  padding: 5rem 1.5rem 2rem;
+  max-width: 1080px;
   margin: 0 auto;
   opacity: 0; transform: translateY(24px); transition: all 0.6s cubic-bezier(.2,.9,.3,1);
   text-align: left;
@@ -236,31 +263,36 @@ onBeforeUnmount(() => {
 .intro.visible { opacity: 1; transform: translateY(0); }
 
 .intro-inner {
-  background: #fff;
-  padding: 2.5rem 2rem 2rem 2rem;
-  border-radius: 16px;
-  box-shadow: 0 12px 32px rgba(16,24,40,0.08);
+  background: var(--bg-panel-strong);
+  padding: 2.6rem;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft), var(--shadow-inset);
   min-height: 320px;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--border-soft);
+  backdrop-filter: blur(12px);
 }
 .intro h2 {
   margin-top: 0;
-  font-size: 2rem;
+  font-size: 2.1rem;
   font-weight: 700;
-  letter-spacing: 0.02em;
-  color: #1a2233;
-  margin-bottom: 2rem;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  margin-bottom: 1.8rem;
 }
 
 .project-card {
-  background: linear-gradient(120deg, #f5f7fa 60%, #e9f0ff 100%);
-  border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(80,120,200,0.08);
-  padding: 2rem 1.5rem 1.5rem 1.5rem;
-  margin-bottom: 1.5rem;
-  transition: box-shadow .2s;
+  background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(243,246,252,0.98));
+  border-radius: 22px;
+  box-shadow: 0 18px 36px rgba(24, 33, 47, 0.08);
+  padding: 2rem 1.6rem 1.7rem;
+  margin-bottom: 0;
+  transition: box-shadow .2s, transform .2s;
+  border: 1px solid rgba(103, 120, 152, 0.14);
 }
 .project-card:hover {
-  box-shadow: 0 8px 32px rgba(80,120,200,0.16);
+  box-shadow: 0 24px 44px rgba(24, 33, 47, 0.12);
+  transform: translateY(-3px);
 }
 .project-header {
   display: flex;
@@ -270,54 +302,66 @@ onBeforeUnmount(() => {
 }
 .project-badge {
   display: inline-block;
-  background: #3b82f6;
-  color: #fff;
-  font-size: 0.85rem;
-  border-radius: 6px;
-  padding: 0.2em 0.8em;
+  background: rgba(49, 70, 208, 0.1);
+  color: var(--brand);
+  font-size: 0.78rem;
+  border-radius: 999px;
+  padding: 0.3em 0.9em;
   font-weight: 600;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.08em;
 }
 .project-header h3 {
   margin: 0;
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: #1a2233;
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--text-primary);
 }
 .project-desc {
   margin: 0.5rem 0 1.2rem 0;
-  color: #3b4252;
-  font-size: 1.08rem;
+  color: var(--text-secondary);
+  font-size: 1.02rem;
+  line-height: 1.85;
 }
 .project-features {
   margin: 0 0 1.2rem 1.2rem;
   padding: 0;
-  color: #2d3748;
-  font-size: 1rem;
+  color: var(--text-primary);
+  font-size: 0.98rem;
   list-style: disc;
+}
+.project-features li {
+  margin: 0.48rem 0;
+  line-height: 1.7;
 }
 .project-meta {
   font-size: 0.95rem;
-  color: #6b7280;
-  margin-bottom: 1rem;
+  color: var(--text-muted);
+  margin-bottom: 1.1rem;
 }
 .project-link {
   display: inline-block;
-  color: #2563eb;
+  color: var(--brand);
   font-weight: 600;
-  text-decoration: none;
-  border-bottom: 1px solid #2563eb22;
+  border-bottom: 1px solid rgba(49, 70, 208, 0.18);
   padding-bottom: 2px;
-  transition: color .2s;
+  transition: color .2s, border-color .2s;
 }
 .project-link:hover {
-  color: #1d4ed8;
-  border-bottom: 1px solid #1d4ed8;
+  color: var(--brand-strong);
+  border-bottom-color: var(--brand-strong);
+}
+
+.footer-info {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  line-height: 1.8;
 }
 
 .footer-info a {
   color: inherit;
-  text-decoration: none;
   transition: all 0.2s ease;
 }
 
@@ -325,8 +369,24 @@ onBeforeUnmount(() => {
   text-decoration: underline;
 }
 
-@media (min-width: 900px) {
-  .hero h1 { font-size: 4rem; }
-  .intro { padding: 6rem 1.5rem; }
+@media (max-width: 900px) {
+  .hero {
+    height: 84vh;
+    min-height: 680px;
+  }
+
+  .intro {
+    padding-top: 3rem;
+  }
+
+  .intro-inner {
+    padding: 1.6rem 1.2rem;
+  }
+
+  .project-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
 }
 </style>
